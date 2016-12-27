@@ -1,49 +1,83 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+(function () {
+    "use strict";
+    document.addEventListener('deviceready', onDeviceReady.bind(this), false);
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+    if ($.isWin) {
+        document.getElementById("theamstyle").setAttribute('href', './css/chui-win-3.8.5.css');
     }
-};
+    else
+        if ($.isAndroid) {
+            document.getElementById("theamstyle").setAttribute('href', './css/chui-android-3.8.5.css');
+        }
+        else
+            if ($.isiOS) {
+                document.getElementById("theamstyle").setAttribute('href', './css/chui-iso-3.8.5.css');
+            }
+            else {
+                document.getElementById("theamstyle").setAttribute('href', './css/chui-win-3.8.5.css');
+            }
+    function onDeviceReady() {
+        document.addEventListener('pause', onPause.bind(this), false);
+        document.addEventListener('resume', onResume.bind(this), false);
+    };
+    function onPause() {
+    };
+
+    $('#btn').click(function () {
+        $.UIGoToArticle('#art');
+        $("#btn").stop();
+    });
+
+    $('#backbtn').click(function () {
+        $.UIGoToArticle('#main');
+        $("#backbtn").stop();
+    });
+
+    $('.Cancelbtn').click(function () {
+        $.UIGoToArticle('#main');
+    });
+
+    $('.morebtn').click(function () {
+        $('#secondnav').hide();
+        $('#toggleseconddiv').show();
+    });
+
+
+    $('.Togglebtn2').click(function () {
+        $('#secondnav').show();
+        $('#toggleseconddiv').hide();
+    });
+
+    var num = 0;
+    $('.Savvebtn').click(function () {
+        num++;
+        var mb = $('#rr').text();
+        var storedvalue = localStorage.setItem("SetItemKey", mb);
+        $.UIGoToArticle('#main');
+        $("#showddd").prepend("<div style='background-color:#65ce71; margin-top:5px;'>"
+           + "<button class='ui-btn ui-shadow ui-corner-all ui-icon-edit ui-btn-icon-notext' type='button' style='width:33px !important;height:37px !important;  background-color: #007aff !important; margin-left: 251px; margin-right: -8px;'>M</button>" + "<button class='ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext' type='button ' style='width:33px !important; height:37px !important;  background-color: #007aff !important;'>D</button>" +
+             "</div>" + "<div id='page_number' style='background-color:#65ce71;'> You are watching 5th object out of 100 </div>");
+        // $("#showddd").prepend("<div id='page_number' style='background-color:red; margin-top:5px;'> You are watching 5th object out of 100 </div>");
+        document.getElementById('page_number').innerHTML = localStorage.getItem("SetItemKey");
+        document.getElementById('numb').innerHTML = num;
+        
+    });
+
+    $('#showddd').click(function () {
+        $('#rr').text("");
+        $.UIGoToArticle('#art');
+        var md = $('#page_number').text();
+        $('#rr').text(md);
+    });
+    $('#rr').click(function () {
+        $('#spantext').toggle().hide;
+        $('#rr').text("");
+            
+       
+    })
+
+
+    function onResume() {
+        // TODO: This application has been reactivated. Restore application state here.
+    };
+})();

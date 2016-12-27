@@ -1,46 +1,78 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-     
-     
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-      <script>
-	  function fun()
-	  {
-	  aler("sanju");}
-	  </script>
-	  <p  click="fun()">This is sanju</p>
-        
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+<head>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="css/index.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" id="theamstyle" />
+    <script src="scripts/jquery-2.1.0.js"></script>
+    <script src="scripts/chui-3.8.5.min.js"></script>
+    <script src="scripts/angular.min (1).js"></script>
+  
+    <title>Memo</title>
+    <script>
+            var myapp = angular.module("Myapp", []);
+            myapp.controller("Fun", function ($scope) {
+            });
+    </script>
+</head>
+<body ng-app="Myapp" ng-controller="Fun" >
+    <nav>
+        <div>
+            <img id="img1" src="css/download.jpg" />
+            <h2>Memo(<span id="numb">0</span>)</h2>
+        </div>
+        <div id="btndiv">
+            <button type="button" data-transition="none" id="btn">ADD</button>
+        </div>
+    </nav>
+    <article id="main" class="current">
+        <section class="mainsection">
+            <div id="showddd"></div>
+        </section>
+    </article>
+    <nav>
+        <button type="button" data-transition="none" class="button back modifybtn"></button>
+        <button type="button" data-transition="none" class="Cancelbtn">Cancel</button>
+        <button type="button" data-transition="none" class="Savvebtn">Save</button>
+    </nav>
+    <article id="art" >
+        <div id="secondnav">
+            <div>
+            <a  href="#myPopup" style="float:left;"  data-rel="popup" class="deletebtn ui-btn ui-shadow ui-corner-all ui-icon-edit  ui-btn-icon-notext" data-transition="none" type="button" >D</a>
+            <button class="morebtn ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" data-transition="none" type="button">M</button>
+            <div data-role="popup" id="myPopup" class="ui-content" data-position-to="window"  data-overlay-theme="b">
+                <p>I have a dark background behind me.</p>
+            </div>
+                </div>
+            
+           
+        </div>
+        <div id="toggleseconddiv" style="display:none;">
+            <button class="deletebtn2 moreicon ui-btn ui-shadow ui-corner-all ui-icon-edit ui-btn-icon-notext" data-transition="none" type="button">DD</button>
+            <button class="colorbtn moreicon ui-btn ui-shadow ui-corner-all ui-icon-lock ui-btn-icon-notext" data-transition="none" type="button">Co</button>
+            <button class="lockbtn moreicon ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext" data-transition="none" type="button">L</button>
+            <button class="Togglebtn2 moreicon ui-btn ui-shadow ui-corner-all ui-icon-carat-r ui-btn-icon-notext" data-transition="none" type="button">T</button>
+            
+        </div>
+        <section class="mainsection">
+            <div id="rr" contenteditable style="background-color:white; height:600px; font-size:23px; padding-top:10px; font-style:italic;"> <span id="spantext">Please Enter the Text</span>
+            </div>
+            <!--<div data-role="page">
+                <div data-role="main" class="ui-content">
+                    <a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Show Popup</a>
+
+                    <div data-role="popup" id="myPopup" class="ui-content" data-overlay-theme="b">
+                        <p>I have a dark background behind me.</p>
+                    </div>
+                </div>
+            </div>-->
+
+
+
+        </section>
+    </article>
+    <script type="text/javascript" src="scripts/index.js"></script>
+</body>
 </html>
